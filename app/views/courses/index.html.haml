@@ -15,7 +15,7 @@
   %tbody
     - @courses.each do |course|
       %tr
-        %td= course.title
+        %td= course
         %td= course.description
         %td= course.user
         %td= link_to 'Show', course
