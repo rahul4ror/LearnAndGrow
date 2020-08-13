@@ -4,6 +4,10 @@ user = User.create!(email: "admin@example.com", password: "123456", password_con
   Course.create!([{
     title: Faker::Book.title,
     description: Faker::Books::Lovecraft.sentence,
+    short_description: Faker::Books::Lovecraft.sentence,
+    language: 'English',
+    level: "Beginner",
+    price: "100",
     user: user
   }])
 end
