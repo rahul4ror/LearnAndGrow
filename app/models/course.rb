@@ -2,6 +2,8 @@ class Course < ApplicationRecord
   validates :title, :short_description, :language, :level, :price, presence: true
   validates :description, presence: true, length: { minimum: 5 }
   has_rich_text :description
+  include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   belongs_to :user
 

@@ -3,14 +3,20 @@
     What do you want to learn?
 
   .p-4
-
-  .form-inline.my-2.my-lg-0.justify-content-center
-    = form_tag(courses_path, method: :get) do
-      .input-group.text-center
-        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
-        %span.input-group-append
-          %button.btn.btn-primary.btn-sm{:type => "submit"}
-            %span.fa.fa-search{"aria-hidden" => "true"}
+  - if current_user
+    .form-inline.my-2.my-lg-0.justify-content-center
+      = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+        .input-group
+          = f.search_field :title_cont, autocomplete: 'off', placeholder: "Find a course", class: 'form-control-sm'
+          %span.input-group-append
+            %button.btn.btn-primary.btn-sm{:type => "submit"}
+              %span.fa.fa-search{"aria-hidden" => "true"}
+      / = form_tag(courses_path, method: :get) do
+      / .input-group.text-center
+      /   = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: 'form-control-sm'
+      /   %span.input-group-append
+      /     %button.btn.btn-primary.btn-sm{:type => "submit"}
+      /       %span.fa.fa-search{"aria-hidden" => "true"}
 
 .card-group
   .card.card-body

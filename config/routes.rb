@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   get 'home/index'
   root 'home#index'
+  get 'home/activity'
 end
